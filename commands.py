@@ -5,9 +5,12 @@ from transformers import VisionEncoderDecoderModel, AutoTokenizer, ViTImageProce
 
 class CaptionModel:
     def __init__(self, model_path="ViTGP", device=None):
+
         if device is None:
             device = "cuda" if torch.cuda.is_available() else "cpu"
+
         self.device = device
+        print(self.device)
         print(f"[Commands] Cargando modelo de Captioning desde: {model_path}")
 
         self.model = VisionEncoderDecoderModel.from_pretrained(model_path)
